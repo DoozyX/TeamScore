@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  TeamScore Watch App
-//
-//  Created by Slobodan Kletnikov on 23.8.23.
-//
-
 import SwiftUI
 
 struct TeamScore: View {
@@ -22,17 +15,19 @@ struct TeamScore: View {
             } else {
                 score+=1;
             }
-          }
+        }
     }
 }
 
 struct ContentView: View {
     @State private var selection = 1
+    @ObservedObject var viewModel: WatchViewModel = WatchViewModel()
     
     var body: some View {
         TabView(selection: $selection) {
             Button("RESET") {
                 print("Button tapped!")
+                viewModel.testSend(index: 1)
             }.tag(0)
             VStack {
                 TeamScore(color: .green)

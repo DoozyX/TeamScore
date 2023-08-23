@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_score/score_board.dart';
 import 'package:team_score/settings.dart';
@@ -7,6 +8,8 @@ import 'package:team_score/settings.dart';
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
+
+const channel = MethodChannel('com.doozyx.teamscore-ios-channel');
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

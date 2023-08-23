@@ -22,6 +22,7 @@
 		A875062D2A966B0600315B2F /* TeamScore_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A875062C2A966B0600315B2F /* TeamScore_Watch_AppUITests.swift */; };
 		A875062F2A966B0600315B2F /* TeamScore_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A875062E2A966B0600315B2F /* TeamScore_Watch_AppUITestsLaunchTests.swift */; };
 		A87506322A966B0600315B2F /* TeamScore Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A875060F2A966B0400315B2F /* TeamScore Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A89650552A9682B700724451 /* WatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89650542A9682B700724451 /* WatchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		A87506282A966B0500315B2F /* TeamScore Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TeamScore Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A875062C2A966B0600315B2F /* TeamScore_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScore_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		A875062E2A966B0600315B2F /* TeamScore_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScore_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A89650542A9682B700724451 /* WatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 				A87506132A966B0400315B2F /* ContentView.swift */,
 				A87506152A966B0500315B2F /* Assets.xcassets */,
 				A87506172A966B0500315B2F /* Preview Content */,
+				A89650542A9682B700724451 /* WatchViewModel.swift */,
 			);
 			path = "TeamScore Watch App";
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 			files = (
 				A87506142A966B0400315B2F /* ContentView.swift in Sources */,
 				A87506122A966B0400315B2F /* TeamScoreApp.swift in Sources */,
+				A89650552A9682B700724451 /* WatchViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
