@@ -1,23 +1,21 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:team_score/score_board.dart';
-import 'package:team_score/settings.dart';
+import 'package:team_score/src/score/score.dart';
+import 'package:team_score/src/scoreboard/score_board.dart';
+import 'package:team_score/src/settings/settings.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-const channel = MethodChannel('com.doozyx.teamscore-ios-channel');
-
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final PageController controller = PageController(initialPage: 1);
-
+    ref.watch(watchSyncProvider);
     return MaterialApp(
       title: 'TeamScore',
       scrollBehavior: const MaterialScrollBehavior().copyWith(

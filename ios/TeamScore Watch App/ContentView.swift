@@ -2,18 +2,24 @@ import SwiftUI
 
 struct TeamScore: View {
     var color: Color
-    @State private var score: Int = 0
+    var score: Int
+    var onScoreChange: (Int)->()
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius:11)
-                .fill(color)
-            Text(String(score))
-        }.onTapGesture { location in
-            if (location.x < 100) {
-                score-=1;
-            } else {
-                score+=1;
+        GeometryReader{g in
+            var size = g.size.height > g.size.width ? g.size.width : g.size.height
+            var fontSize = size * 0.8;
+            ZStack {
+                RoundedRectangle(cornerRadius:11)
+                    .fill(color)
+                Text(String(score))
+                    .font(.system(size: fontSize ))
+            }.onTapGesture { location in
+                if (location.x < g.size.width / 2) {
+                    onScoreChange(score - 1);
+                } else {
+                    onScoreChange(score + 1);
+                }
             }
         }
     }
@@ -21,17 +27,28 @@ struct TeamScore: View {
 
 struct ContentView: View {
     @State private var selection = 1
-    @ObservedObject var viewModel: WatchViewModel = WatchViewModel()
+    @StateObject var viewModel = WatchViewModel()
     
     var body: some View {
         TabView(selection: $selection) {
             Button("RESET") {
-                print("Button tapped!")
-                viewModel.testSend(index: 1)
+                viewModel.reset()
             }.tag(0)
             VStack {
-                TeamScore(color: .green)
-                TeamScore(color: .red)
+                TeamScore(
+                    color: .green,
+                    score: viewModel.team1Score,
+                    onScoreChange: { score in
+                        viewModel.updateTeam1Score(score: score);
+                    }
+                )
+                TeamScore(
+                    color: .red,
+                    score: viewModel.team2Score,
+                    onScoreChange: { score in
+                        viewModel.updateTeam2Score(score: score);
+                    }
+                )
             }.tag(1)
         }
     }

@@ -2,10 +2,39 @@ import UIKit
 import Flutter
 import WatchConnectivity
 
+extension FlutterError: Error {}
+
+class TeamScoreHostApiImplementation : TeamScoreHostApi {
+    var session: WCSession?
+    
+    init(session: WCSession?) {
+        self.session = session;
+    }
+    func sendScore(message: MessageData, completion: @escaping (Result<Void, Error>) -> Void) {
+        print("[ios] send to watch", message);
+        if session == nil {
+            print("No session…");
+            completion(.failure(FlutterError()));
+            return;
+        }
+        if(!session!.isPaired || !session!.isReachable){
+            print("Watch not reachable…");
+            completion(.failure(FlutterError()));
+            return;
+        }
+        DispatchQueue.main.async { // Send the message asynchronously
+            print("Sending counter…");
+            self.session!.sendMessage(["team1Score": message.team1Score, "team2Score": message.team2Score], replyHandler: nil);
+            completion(.success(Void()));
+        }
+    }
+}
+
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate, WCSessionDelegate {
     var session: WCSession?
-    var channel: FlutterMethodChannel?
+    var hostApi: TeamScoreHostApiImplementation?
+    var flutterApi: TeamScoreFlutterApi?
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) { }
     
@@ -14,46 +43,43 @@ import WatchConnectivity
     func sessionDidDeactivate(_ session: WCSession) { }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        print("ios session call")
-        print(message)
-        if channel == nil {
-            print("nill channel")
-            return;
-        }
-        DispatchQueue.main.async {
-            print("send to fluter channel")
-            self.channel!.invokeMethod("counter", arguments: message)
+        print("[iOS] session call", message)
+        let score1 = message["team1Score"] as! Int;
+        let score2 = message["team2Score"] as! Int;
+        DispatchQueue.main.async { // Send the message asynchronously
+            self.flutterApi?.sendScore(data: MessageData(team1Score: Int64(score1), team2Score: Int64(score2)),
+                                       completion:  {})
         }
     }
     
-    func sendString(text: String) -> Bool {
-        print("ios send", text)
-        if session == nil {
-            print("No session…")
-            return false;
-        }
-        if(!session!.isPaired || !session!.isReachable){
-            print("Watch not reachable…")
-            return false;
-        }
-        DispatchQueue.main.async { // Send the message asynchronously
-            print("Sending counter…")
-            self.session!.sendMessage(["counter": text], replyHandler: nil)
-        }
-        
-        return true;
-    }
+    //    func sendString(text: String) -> Bool {
+    //        print("ios send", text)
+    //        if session == nil {
+    //            print("No session…")
+    //            return false;
+    //        }
+    //        if(!session!.isPaired || !session!.isReachable){
+    //            print("Watch not reachable…")
+    //            return false;
+    //        }
+    //        DispatchQueue.main.async { // Send the message asynchronously
+    //            print("Sending counter…")
+    //            self.session!.sendMessage(["counter": text], replyHandler: nil)
+    //        }
+    //
+    //        return true;
+    //    }
     
     override func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        initFlutterChannel()
         if WCSession.isSupported() {
             session = WCSession.default;
             session?.delegate = self;
             session?.activate();
         }
+        initFlutterChannel()
         
         GeneratedPluginRegistrant.register(with: self)
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -64,31 +90,11 @@ import WatchConnectivity
         if controller == nil {
             return
         }
-        channel = FlutterMethodChannel(
-            name: "com.doozyx.teamscore-ios-channel",
-            binaryMessenger: controller!.binaryMessenger)
+        let binaryMessenger = controller!.binaryMessenger;
         
-        channel!.setMethodCallHandler({ [weak self] (
-            call: FlutterMethodCall,
-            result: @escaping FlutterResult) -> Void in
-            switch call.method {
-            case "sendDataToNative":
-                let ok = self?.sendString(text: call.arguments as! String)
-                result(ok);
-                //                guard let watchSession = self?.session, watchSession.isPaired,
-                //                      watchSession.isReachable, let methodData = call.arguments as? [String: Any],
-                //                      let method = methodData["method"], let data = methodData["data"] as? Any else {
-                //                    result(false)
-                //                    return
-                //                }
-                //
-                //                let watchData: [String: Any] = ["method": method, "data": data]
-                //                watchSession.sendMessage(watchData, replyHandler: nil, errorHandler: nil)
-                //                result(true)
-            default:
-                result(FlutterMethodNotImplemented)
-            }
-        })
+        hostApi = TeamScoreHostApiImplementation(session: session)
+        TeamScoreHostApiSetup.setUp(binaryMessenger: binaryMessenger, api: hostApi)
         
+        flutterApi = TeamScoreFlutterApi(binaryMessenger: binaryMessenger)
     }
 }

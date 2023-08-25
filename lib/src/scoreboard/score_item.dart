@@ -2,18 +2,18 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+typedef OnScoreChange = void Function(int score);
+
 class ScoreItem extends StatelessWidget {
   final Color color;
   final int score;
-  final VoidCallback onIncrement;
-  final VoidCallback onDecrement;
+  final OnScoreChange onScoreChange;
 
   const ScoreItem({
     super.key,
     required this.color,
     required this.score,
-    required this.onIncrement,
-    required this.onDecrement,
+    required this.onScoreChange,
   });
 
   @override
@@ -40,8 +40,12 @@ class ScoreItem extends StatelessWidget {
                 color: Colors.transparent,
                 child: Row(
                   children: [
-                    Expanded(child: InkWell(onTap: onDecrement)),
-                    Expanded(child: InkWell(onTap: onIncrement)),
+                    Expanded(
+                      child: InkWell(onTap: () => onScoreChange(score - 1)),
+                    ),
+                    Expanded(
+                      child: InkWell(onTap: () => onScoreChange(score + 1)),
+                    ),
                   ],
                 ),
               ),
