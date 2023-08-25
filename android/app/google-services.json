@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "830434320277",
+    "project_id": "teamscore-1ae58",
+    "storage_bucket": "teamscore-1ae58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830434320277:android:8429e2d6a5dd326156e09c",
+        "android_client_info": {
+          "package_name": "com.doozyx.team_score"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830434320277-2c696jt891301rmciru346jmck7fegbg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi79eUHGpwZ814N_pn5iU7wD1KA7FKEMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830434320277-2c696jt891301rmciru346jmck7fegbg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
