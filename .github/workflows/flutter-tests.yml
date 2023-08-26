@@ -14,8 +14,8 @@ jobs:
         run: dart format . --set-exit-if-changed
       - name: Analyze code
         run: dart analyze .
-  widget-tests:
-    name: widget-tests
+  tests:
+    name: tests
     runs-on: ubuntu-latest
     needs: analysis
     steps:

@@ -12,3 +12,6 @@ runs:
         channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
     - name: Install Flutter
       uses: subosito/flutter-action@v2
+    - name: Get Dependencies
+      run: flutter pub get
+      shell: bash
