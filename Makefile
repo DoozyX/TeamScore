@@ -6,3 +6,9 @@ build_runner_watch:
 	fvm flutter pub run build_runner watch
 pigeons:
 	fvm flutter pub run pigeon --input pigeons/messages.dart
+format:
+	dart format .
+analyze:
+	fvm flutter analyze .
+test:
+	fvm flutter test
