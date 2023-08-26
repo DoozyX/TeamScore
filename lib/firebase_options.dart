@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '830434320277',
     projectId: 'teamscore-1ae58',
     storageBucket: 'teamscore-1ae58.appspot.com',
-    iosClientId: '830434320277-i780i01vk8a1h108ugbt2n5a6ucdtbvf.apps.googleusercontent.com',
+    iosClientId:
+        '830434320277-i780i01vk8a1h108ugbt2n5a6ucdtbvf.apps.googleusercontent.com',
     iosBundleId: 'com.doozyx.teamScore',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '830434320277',
     projectId: 'teamscore-1ae58',
     storageBucket: 'teamscore-1ae58.appspot.com',
-    iosClientId: '830434320277-0c86orkifd5kul7h76rph34jva4kfagm.apps.googleusercontent.com',
+    iosClientId:
+        '830434320277-0c86orkifd5kul7h76rph34jva4kfagm.apps.googleusercontent.com',
     iosBundleId: 'com.doozyx.teamScore.RunnerTests',
   );
 }

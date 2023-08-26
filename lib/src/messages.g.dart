@@ -54,7 +54,7 @@ class _TeamScoreHostApiCodec extends StandardMessageCodec {
   @override
   Object? readValueOfType(int type, ReadBuffer buffer) {
     switch (type) {
-      case 128: 
+      case 128:
         return MessageData.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
@@ -110,7 +110,7 @@ class _TeamScoreFlutterApiCodec extends StandardMessageCodec {
   @override
   Object? readValueOfType(int type, ReadBuffer buffer) {
     switch (type) {
-      case 128: 
+      case 128:
         return MessageData.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
@@ -123,7 +123,8 @@ abstract class TeamScoreFlutterApi {
 
   void sendScore(MessageData data);
 
-  static void setup(TeamScoreFlutterApi? api, {BinaryMessenger? binaryMessenger}) {
+  static void setup(TeamScoreFlutterApi? api,
+      {BinaryMessenger? binaryMessenger}) {
     {
       final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
           'dev.flutter.pigeon.team_score.TeamScoreFlutterApi.sendScore', codec,
@@ -133,7 +134,7 @@ abstract class TeamScoreFlutterApi {
       } else {
         channel.setMessageHandler((Object? message) async {
           assert(message != null,
-          'Argument for dev.flutter.pigeon.team_score.TeamScoreFlutterApi.sendScore was null.');
+              'Argument for dev.flutter.pigeon.team_score.TeamScoreFlutterApi.sendScore was null.');
           final List<Object?> args = (message as List<Object?>?)!;
           final MessageData? arg_data = (args[0] as MessageData?);
           assert(arg_data != null,
