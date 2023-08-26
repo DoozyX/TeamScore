@@ -29,6 +29,13 @@
             {
               "client_id": "830434320277-2c696jt891301rmciru346jmck7fegbg.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "830434320277-0c86orkifd5kul7h76rph34jva4kfagm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.doozyx.teamScore.RunnerTests"
+              }
             }
           ]
         }
