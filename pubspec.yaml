@@ -27,6 +27,7 @@ dev_dependencies:
   riverpod_lint: ^2.0.1
   pigeon: ^10.1.6
   freezed: ^2.4.1
+  flutter_launcher_icons: ^0.13.1
 
 flutter:
   uses-material-design: true
