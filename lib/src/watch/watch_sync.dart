@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:team_score/src/logger/logger.dart';
 import 'package:team_score/src/messages.g.dart';
 import 'package:team_score/src/score/score.dart';
 
@@ -24,6 +25,7 @@ class TeamScoreFlutterApiHandler extends TeamScoreFlutterApi {
 
 @Riverpod(keepAlive: true)
 void watchSync(WatchSyncRef ref) {
+  final logger = TagLogger('WatchSync');
   if (kIsWeb || !Platform.isIOS) {
     return;
   }
@@ -32,13 +34,12 @@ void watchSync(WatchSyncRef ref) {
   final hostApi = TeamScoreHostApi();
 
   ref.listen(scoreProvider, (previous, next) {
-    // print('[FLUTTER] score changed ${next.team1Score} - ${next.team2Score}');
-    // print('changed $lastSynced $next  ${lastSynced == next}');
+    logger.t('score changed ${next.team1Score} - ${next.team2Score}');
     if (lastSynced == next) {
-      // print('[FLUTTER] already synced');
+      logger.t('already synced');
       return;
     }
-    // print('[FLUTTER] send score: ${next.team1Score} - ${next.team2Score}');
+    logger.t('send score to watch');
     hostApi.sendScore(
       MessageData(
         team1Score: next.team1Score,
@@ -51,10 +52,10 @@ void watchSync(WatchSyncRef ref) {
   final scoreNotifier = ref.watch(scoreProvider.notifier);
   TeamScoreFlutterApi.setup(
     TeamScoreFlutterApiHandler((score) {
-      // print(
-      //     '[FLUTTER] receive score: ${score.team1Score} - ${score.team2Score}');
+      logger.t(
+          'receive score from watch: ${score.team1Score} - ${score.team2Score}');
       if (lastSynced == score) {
-        // print('[FLUTTER] already synced');
+        logger.t('already synced');
         return;
       }
       lastSynced = score;

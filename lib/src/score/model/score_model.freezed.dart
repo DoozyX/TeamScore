@@ -102,8 +102,9 @@ class __$$_ScoreModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ScoreModel implements _ScoreModel {
-  const _$_ScoreModel({required this.team1Score, required this.team2Score});
+class _$_ScoreModel extends _ScoreModel {
+  const _$_ScoreModel({required this.team1Score, required this.team2Score})
+      : super._();
 
   @override
   final int team1Score;
@@ -136,10 +137,11 @@ class _$_ScoreModel implements _ScoreModel {
       __$$_ScoreModelCopyWithImpl<_$_ScoreModel>(this, _$identity);
 }
 
-abstract class _ScoreModel implements ScoreModel {
+abstract class _ScoreModel extends ScoreModel {
   const factory _ScoreModel(
       {required final int team1Score,
       required final int team2Score}) = _$_ScoreModel;
+  const _ScoreModel._() : super._();
 
   @override
   int get team1Score;

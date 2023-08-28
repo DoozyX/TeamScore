@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'score.dart';
+part of 'watch_sync.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$scoreHash() => r'f99ea12781256f709c62a4284aaea491c602b6a4';
+String _$watchSyncHash() => r'dc8045f74688bb631fc7cb4d25f5f32735cc8d13';
 
-/// See also [Score].
-@ProviderFor(Score)
-final scoreProvider = NotifierProvider<Score, ScoreModel>.internal(
-  Score.new,
-  name: r'scoreProvider',
+/// See also [watchSync].
+@ProviderFor(watchSync)
+final watchSyncProvider = Provider<void>.internal(
+  watchSync,
+  name: r'watchSyncProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$scoreHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$watchSyncHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$Score = Notifier<ScoreModel>;
+typedef WatchSyncRef = ProviderRef<void>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member

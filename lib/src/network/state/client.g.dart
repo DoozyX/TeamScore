@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'score.dart';
+part of 'client.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$scoreHash() => r'f99ea12781256f709c62a4284aaea491c602b6a4';
+String _$clientHash() => r'0b45aba13e3091e80ef46f4ab51121937bb6920a';
 
-/// See also [Score].
-@ProviderFor(Score)
-final scoreProvider = NotifierProvider<Score, ScoreModel>.internal(
-  Score.new,
-  name: r'scoreProvider',
+/// See also [Client].
+@ProviderFor(Client)
+final clientProvider = NotifierProvider<Client, ConnectionModel>.internal(
+  Client.new,
+  name: r'clientProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$scoreHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$clientHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$Score = Notifier<ScoreModel>;
+typedef _$Client = Notifier<ConnectionModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
