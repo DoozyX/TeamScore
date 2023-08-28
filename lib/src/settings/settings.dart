@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:team_score/src/settings/game_settings.dart';
 
+import 'game_settings.dart';
 import 'network_settings.dart';
+import 'voice_settings.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -9,13 +10,23 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           bottom: const TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.games)),
-              Tab(icon: Icon(Icons.network_wifi)),
+              Tab(
+                icon: Icon(Icons.games),
+                text: 'Game',
+              ),
+              Tab(
+                icon: Icon(Icons.speaker),
+                text: 'Voice',
+              ),
+              Tab(
+                icon: Icon(Icons.network_wifi),
+                text: 'Network',
+              ),
             ],
           ),
           title: const Text('Settings'),
@@ -23,6 +34,7 @@ class Settings extends StatelessWidget {
         body: const TabBarView(
           children: [
             GameSettings(),
+            VoiceSettings(),
             NetworkSettings(),
           ],
         ),

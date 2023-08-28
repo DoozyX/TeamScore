@@ -6,6 +6,7 @@ import 'package:team_score/src/network/network.dart';
 import 'package:team_score/src/score/score.dart';
 import 'package:team_score/src/scoreboard/score_board.dart';
 import 'package:team_score/src/settings/settings.dart';
+import 'package:team_score/src/voice/voice.dart';
 
 import 'firebase_options.dart';
 
@@ -22,9 +23,12 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final PageController controller = PageController(initialPage: 1);
     ref.watch(watchSyncProvider);
     ref.watch(networkScoreSyncProvider);
+    ref.watch(voiceProvider);
+
+    final PageController controller = PageController(initialPage: 1);
+
     return MaterialApp(
       title: 'TeamScore',
       scrollBehavior: const MaterialScrollBehavior().copyWith(

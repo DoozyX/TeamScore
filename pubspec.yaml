@@ -21,6 +21,8 @@ dependencies:
   network_info_plus: ^4.0.2
   qr_flutter: ^4.1.0
   mobile_scanner: ^3.4.1
+  flutter_tts: ^3.8.1
+  hooks_riverpod: ^2.3.10
 
 dev_dependencies:
   flutter_test:
