@@ -16,6 +16,10 @@ class ClientSettings extends ConsumerWidget {
     return Center(
       child: ElevatedButton(
         onPressed: () async {
+          if (client.connected) {
+            clientNotifier.disconnect();
+            return;
+          }
           final hostAddress = await _dialogBuilder(context);
           logger.t('scanned hostAddress: $hostAddress');
           if (hostAddress == null) {

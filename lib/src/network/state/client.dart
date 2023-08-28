@@ -41,6 +41,12 @@ class Client extends _$Client {
     );
   }
 
+  void disconnect() {
+    _logger.t('disconnect');
+    _socket?.destroy();
+    state = ConnectionModel.disconnected();
+  }
+
   Future<void> send(String message) async {
     _socket!.write(message);
   }
