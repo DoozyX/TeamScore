@@ -11,7 +11,7 @@ const port = 4040;
 
 @Riverpod(keepAlive: true)
 class Server extends _$Server {
-  final _logger = TagLogger('[NetworkSync]');
+  final _logger = TagLogger('NetworkServer');
   final List<Socket> _connections = [];
   ServerSocket? _server;
   OnData? _onData;

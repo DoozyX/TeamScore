@@ -7,7 +7,7 @@ part 'network_score_sync.g.dart';
 
 @Riverpod(keepAlive: true)
 void networkScoreSync(NetworkScoreSyncRef ref) {
-  final logger = TagLogger('NetworkSync');
+  final logger = TagLogger('NetworkScoreSync');
   ScoreModel? lastSynced;
 
   final serverNotifier = ref.watch(serverProvider.notifier);

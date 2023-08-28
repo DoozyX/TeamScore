@@ -11,27 +11,33 @@ class NetworkSettings extends HookWidget {
     final selectedMode = useState(0);
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(children: [
-        SegmentedButton<int>(
-          segments: const <ButtonSegment<int>>[
-            ButtonSegment<int>(
-                value: 0, label: Text('Client'), icon: Icon(Icons.looks_one)),
-            ButtonSegment<int>(
+      child: Column(
+        children: [
+          SegmentedButton<int>(
+            segments: const <ButtonSegment<int>>[
+              ButtonSegment<int>(
+                value: 0,
+                label: Text('Client'),
+                icon: Icon(Icons.looks_one),
+              ),
+              ButtonSegment<int>(
                 value: 1,
                 label: Text('Server'),
-                icon: Icon(Icons.connect_without_contact)),
-          ],
-          selected: {selectedMode.value},
-          onSelectionChanged: (final newSelection) {
-            selectedMode.value = newSelection.first;
-          },
-        ),
-        const SizedBox(height: 8),
-        if (selectedMode.value == 0)
-          const ClientSettings()
-        else
-          const ServerSettings()
-      ]),
+                icon: Icon(Icons.connect_without_contact),
+              ),
+            ],
+            selected: {selectedMode.value},
+            onSelectionChanged: (final newSelection) {
+              selectedMode.value = newSelection.first;
+            },
+          ),
+          const SizedBox(height: 8),
+          if (selectedMode.value == 0)
+            const ClientSettings()
+          else
+            const ServerSettings(),
+        ],
+      ),
     );
   }
 }

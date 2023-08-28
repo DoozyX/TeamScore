@@ -53,7 +53,8 @@ void watchSync(WatchSyncRef ref) {
   TeamScoreFlutterApi.setup(
     TeamScoreFlutterApiHandler((score) {
       logger.t(
-          'receive score from watch: ${score.team1Score} - ${score.team2Score}');
+        'receive score from watch: ${score.team1Score} - ${score.team2Score}',
+      );
       if (lastSynced == score) {
         logger.t('already synced');
         return;

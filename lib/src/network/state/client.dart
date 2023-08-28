@@ -8,7 +8,7 @@ part 'client.g.dart';
 
 @Riverpod(keepAlive: true)
 class Client extends _$Client {
-  final _logger = TagLogger('[NetworkSync]');
+  final _logger = TagLogger('NetworkClient');
   Socket? _socket;
   OnData? _onData;
 
