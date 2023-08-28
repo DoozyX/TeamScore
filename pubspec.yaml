@@ -23,7 +23,7 @@ dev_dependencies:
   flutter_lints: ^2.0.2
   build_runner: ^2.4.6
   custom_lint: ^0.5.2
-  riverpod_generator: ^2.2.6
+  riverpod_generator: ^2.3.0
   riverpod_lint: ^2.0.1
   pigeon: ^10.1.6
   freezed: ^2.4.1
