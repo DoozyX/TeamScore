@@ -34,12 +34,9 @@ class Voice extends _$Voice {
     await _flutterTts.setIosAudioCategory(
       IosTextToSpeechAudioCategory.playback,
       [
-        IosTextToSpeechAudioCategoryOptions.defaultToSpeaker,
-        IosTextToSpeechAudioCategoryOptions.allowBluetooth,
-        IosTextToSpeechAudioCategoryOptions.allowBluetoothA2DP,
         IosTextToSpeechAudioCategoryOptions.mixWithOthers,
+        IosTextToSpeechAudioCategoryOptions.duckOthers,
       ],
-      IosTextToSpeechAudioMode.voicePrompt,
     );
   }
 
