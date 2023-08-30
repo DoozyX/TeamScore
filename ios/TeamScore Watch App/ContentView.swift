@@ -7,8 +7,8 @@ struct TeamScore: View {
     
     var body: some View {
         GeometryReader{g in
-            var size = g.size.height > g.size.width ? g.size.width : g.size.height
-            var fontSize = size * 0.8;
+            let size = g.size.height > g.size.width ? g.size.width : g.size.height
+            let fontSize = size * 0.8;
             ZStack {
                 RoundedRectangle(cornerRadius:11)
                     .fill(color)
