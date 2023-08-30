@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +9,7 @@ import 'package:team_score/src/score/score.dart';
 import 'package:team_score/src/scoreboard/score_board.dart';
 import 'package:team_score/src/settings/settings.dart';
 import 'package:team_score/src/voice/voice.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 import 'firebase_options.dart';
 
@@ -15,6 +18,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  unawaited(WakelockPlus.enable());
   runApp(const ProviderScope(child: MyApp()));
 }
 
