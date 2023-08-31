@@ -15,57 +15,61 @@ class Server extends _$Server {
   final List<Socket> _connections = [];
   ServerSocket? _server;
   OnData? _onData;
+
   @override
-  ConnectionModel build() {
-    return ConnectionModel.disconnected();
+  Future<ConnectionModel> build() async {
+    return const ConnectionModel.disconnected();
   }
 
   Future<void> start() async {
-    final info = NetworkInfo();
-    final wifiIP = await info.getWifiIP();
-    if (wifiIP == null) {
-      _logger.e('wifiIP is null');
-      return;
-    }
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      final info = NetworkInfo();
+      final wifiIP = await info.getWifiIP();
+      if (wifiIP == null) {
+        _logger.e('wifiIP is null');
+        throw Exception('Missing WiFi IP');
+      }
 
-    _server = await ServerSocket.bind(wifiIP, port);
-    state = ConnectionModel.connected('$wifiIP:$port');
-    _logger
-        .t('server started, listening on $port, address ${_server!.address}');
-    _server!.listen(
-      (socket) {
-        _logger.t('connection from $socket');
-        if (!_connections.contains(socket)) {
-          _logger.t('adding to connections $socket');
-          _connections.add(socket);
-        }
-        socket.listen(
-          (data) {
-            final value = String.fromCharCodes(data);
-            _logger.t('received data $value');
-            _onData?.call(value);
-          },
-          onError: (error) => _logger.e(error, error),
-          onDone: () {
-            _logger.t('done $socket');
-            _connections.remove(socket);
-          },
-        );
-      },
-      onError: (error) => _logger.e('server', error),
-      onDone: () {
-        state = ConnectionModel.disconnected();
+      _server = await ServerSocket.bind(wifiIP, port);
+      _logger
+          .t('server started, listening on $port, address ${_server!.address}');
+      _server!.listen(
+        (socket) {
+          _logger.t('connection from $socket');
+          if (!_connections.contains(socket)) {
+            _logger.t('adding to connections $socket');
+            _connections.add(socket);
+          }
+          socket.listen(
+            (data) {
+              final value = String.fromCharCodes(data);
+              _logger.t('received data $value');
+              _onData?.call(value);
+            },
+            onError: (error) => _logger.e(error, error),
+            onDone: () {
+              _logger.t('done $socket');
+              _connections.remove(socket);
+            },
+          );
+        },
+        onError: (error) => _logger.e('server', error),
+        onDone: () {
+          state = const AsyncValue.data(ConnectionModel.disconnected());
 
-        _logger.t('server done');
-      },
-    );
+          _logger.t('server done');
+        },
+      );
+      return ConnectionModel.connected('$wifiIP:$port');
+    });
   }
 
   void stop() {
     _server?.close();
     _connections.clear();
     _server = null;
-    state = ConnectionModel.disconnected();
+    state = const AsyncValue.data(ConnectionModel.disconnected());
   }
 
   void setOnData(OnData onData) {

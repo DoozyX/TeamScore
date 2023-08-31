@@ -6,11 +6,11 @@ part of 'server.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$serverHash() => r'c3a2637642a707a8987fda671196560123385839';
+String _$serverHash() => r'e3647db707986b95074734309beb26c8b35f5779';
 
 /// See also [Server].
 @ProviderFor(Server)
-final serverProvider = NotifierProvider<Server, ConnectionModel>.internal(
+final serverProvider = AsyncNotifierProvider<Server, ConnectionModel>.internal(
   Server.new,
   name: r'serverProvider',
   debugGetCreateSourceHash:
@@ -19,6 +19,6 @@ final serverProvider = NotifierProvider<Server, ConnectionModel>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef _$Server = Notifier<ConnectionModel>;
+typedef _$Server = AsyncNotifier<ConnectionModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
