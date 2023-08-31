@@ -6,7 +6,7 @@ part of 'network_score_sync.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$networkScoreSyncHash() => r'9271c40845b968df6fa30e41f30bc6ea44876c0f';
+String _$networkScoreSyncHash() => r'fedec7fd359caf219d714d2b7ca6e346112ea2b8';
 
 /// See also [networkScoreSync].
 @ProviderFor(networkScoreSync)

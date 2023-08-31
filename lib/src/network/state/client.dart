@@ -13,12 +13,12 @@ class Client extends _$Client {
   OnData? _onData;
 
   @override
-  ConnectionModel build() {
+  Future<ConnectionModel> build() async {
     ref.onDispose(() {
       _logger.t('stop client');
       _socket?.destroy();
     });
-    return ConnectionModel.disconnected();
+    return const ConnectionModel.disconnected();
   }
 
   void setOnData(OnData onData) {
@@ -27,24 +27,31 @@ class Client extends _$Client {
 
   Future<void> connect(String hostAddress) async {
     _logger.t('connect to $hostAddress');
-    final [host, port] = hostAddress.split(':');
-    _socket = await Socket.connect(host, int.parse(port));
-    state = ConnectionModel.connected(host);
-    _socket!.listen(
-      (data) {
-        final value = String.fromCharCodes(data);
-        _logger.t('received data $value');
-        _onData?.call(value);
-      },
-      onError: (error) => _logger.e(error, error),
-      onDone: () => _logger.t('done'),
-    );
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      final [host, port] = hostAddress.split(':');
+      _socket = await Socket.connect(
+        host,
+        int.parse(port),
+        timeout: const Duration(seconds: 5),
+      );
+      _socket!.listen(
+        (data) {
+          final value = String.fromCharCodes(data);
+          _logger.t('received data $value');
+          _onData?.call(value);
+        },
+        onError: (error) => _logger.e(error, error),
+        onDone: () => _logger.t('done'),
+      );
+      return ConnectionModel.connected(hostAddress);
+    });
   }
 
   void disconnect() {
     _logger.t('disconnect');
     _socket?.destroy();
-    state = ConnectionModel.disconnected();
+    state = const AsyncValue.data(ConnectionModel.disconnected());
   }
 
   Future<void> send(String message) async {

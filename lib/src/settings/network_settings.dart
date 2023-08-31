@@ -32,10 +32,11 @@ class NetworkSettings extends HookWidget {
             },
           ),
           const SizedBox(height: 8),
-          if (selectedMode.value == 0)
-            const ClientSettings()
-          else
-            const ServerSettings(),
+          Expanded(
+            child: selectedMode.value == 0
+                ? const ClientSettings()
+                : const ServerSettings(),
+          ),
         ],
       ),
     );

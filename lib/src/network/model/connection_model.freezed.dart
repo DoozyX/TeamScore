@@ -16,11 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ConnectionModel {
-  String? get host => throw _privateConstructorUsedError;
-  bool get connected => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ConnectionModelCopyWith<ConnectionModel> get copyWith =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() disconnected,
+    required TResult Function(String host) connected,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? disconnected,
+    TResult? Function(String host)? connected,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? disconnected,
+    TResult Function(String host)? connected,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ConnectionModelDisconnected value) disconnected,
+    required TResult Function(ConnectionModelConnected value) connected,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ConnectionModelDisconnected value)? disconnected,
+    TResult? Function(ConnectionModelConnected value)? connected,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ConnectionModelDisconnected value)? disconnected,
+    TResult Function(ConnectionModelConnected value)? connected,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -29,8 +61,6 @@ abstract class $ConnectionModelCopyWith<$Res> {
   factory $ConnectionModelCopyWith(
           ConnectionModel value, $Res Function(ConnectionModel) then) =
       _$ConnectionModelCopyWithImpl<$Res, ConnectionModel>;
-  @useResult
-  $Res call({String? host, bool connected});
 }
 
 /// @nodoc
@@ -42,110 +72,245 @@ class _$ConnectionModelCopyWithImpl<$Res, $Val extends ConnectionModel>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? host = freezed,
-    Object? connected = null,
-  }) {
-    return _then(_value.copyWith(
-      host: freezed == host
-          ? _value.host
-          : host // ignore: cast_nullable_to_non_nullable
-              as String?,
-      connected: null == connected
-          ? _value.connected
-          : connected // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_ConnectionModelCopyWith<$Res>
-    implements $ConnectionModelCopyWith<$Res> {
-  factory _$$_ConnectionModelCopyWith(
-          _$_ConnectionModel value, $Res Function(_$_ConnectionModel) then) =
-      __$$_ConnectionModelCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? host, bool connected});
+abstract class _$$ConnectionModelDisconnectedCopyWith<$Res> {
+  factory _$$ConnectionModelDisconnectedCopyWith(
+          _$ConnectionModelDisconnected value,
+          $Res Function(_$ConnectionModelDisconnected) then) =
+      __$$ConnectionModelDisconnectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ConnectionModelCopyWithImpl<$Res>
-    extends _$ConnectionModelCopyWithImpl<$Res, _$_ConnectionModel>
-    implements _$$_ConnectionModelCopyWith<$Res> {
-  __$$_ConnectionModelCopyWithImpl(
-      _$_ConnectionModel _value, $Res Function(_$_ConnectionModel) _then)
+class __$$ConnectionModelDisconnectedCopyWithImpl<$Res>
+    extends _$ConnectionModelCopyWithImpl<$Res, _$ConnectionModelDisconnected>
+    implements _$$ConnectionModelDisconnectedCopyWith<$Res> {
+  __$$ConnectionModelDisconnectedCopyWithImpl(
+      _$ConnectionModelDisconnected _value,
+      $Res Function(_$ConnectionModelDisconnected) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? host = freezed,
-    Object? connected = null,
-  }) {
-    return _then(_$_ConnectionModel(
-      host: freezed == host
-          ? _value.host
-          : host // ignore: cast_nullable_to_non_nullable
-              as String?,
-      connected: null == connected
-          ? _value.connected
-          : connected // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_ConnectionModel implements _ConnectionModel {
-  const _$_ConnectionModel({required this.host, required this.connected});
-
-  @override
-  final String? host;
-  @override
-  final bool connected;
+class _$ConnectionModelDisconnected implements ConnectionModelDisconnected {
+  const _$ConnectionModelDisconnected();
 
   @override
   String toString() {
-    return 'ConnectionModel(host: $host, connected: $connected)';
+    return 'ConnectionModel.disconnected()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ConnectionModel &&
-            (identical(other.host, host) || other.host == host) &&
-            (identical(other.connected, connected) ||
-                other.connected == connected));
+            other is _$ConnectionModelDisconnected);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, host, connected);
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() disconnected,
+    required TResult Function(String host) connected,
+  }) {
+    return disconnected();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? disconnected,
+    TResult? Function(String host)? connected,
+  }) {
+    return disconnected?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? disconnected,
+    TResult Function(String host)? connected,
+    required TResult orElse(),
+  }) {
+    if (disconnected != null) {
+      return disconnected();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ConnectionModelDisconnected value) disconnected,
+    required TResult Function(ConnectionModelConnected value) connected,
+  }) {
+    return disconnected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ConnectionModelDisconnected value)? disconnected,
+    TResult? Function(ConnectionModelConnected value)? connected,
+  }) {
+    return disconnected?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ConnectionModelDisconnected value)? disconnected,
+    TResult Function(ConnectionModelConnected value)? connected,
+    required TResult orElse(),
+  }) {
+    if (disconnected != null) {
+      return disconnected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ConnectionModelDisconnected implements ConnectionModel {
+  const factory ConnectionModelDisconnected() = _$ConnectionModelDisconnected;
+}
+
+/// @nodoc
+abstract class _$$ConnectionModelConnectedCopyWith<$Res> {
+  factory _$$ConnectionModelConnectedCopyWith(_$ConnectionModelConnected value,
+          $Res Function(_$ConnectionModelConnected) then) =
+      __$$ConnectionModelConnectedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String host});
+}
+
+/// @nodoc
+class __$$ConnectionModelConnectedCopyWithImpl<$Res>
+    extends _$ConnectionModelCopyWithImpl<$Res, _$ConnectionModelConnected>
+    implements _$$ConnectionModelConnectedCopyWith<$Res> {
+  __$$ConnectionModelConnectedCopyWithImpl(_$ConnectionModelConnected _value,
+      $Res Function(_$ConnectionModelConnected) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? host = null,
+  }) {
+    return _then(_$ConnectionModelConnected(
+      null == host
+          ? _value.host
+          : host // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ConnectionModelConnected implements ConnectionModelConnected {
+  const _$ConnectionModelConnected(this.host);
+
+  @override
+  final String host;
+
+  @override
+  String toString() {
+    return 'ConnectionModel.connected(host: $host)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ConnectionModelConnected &&
+            (identical(other.host, host) || other.host == host));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, host);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ConnectionModelCopyWith<_$_ConnectionModel> get copyWith =>
-      __$$_ConnectionModelCopyWithImpl<_$_ConnectionModel>(this, _$identity);
+  _$$ConnectionModelConnectedCopyWith<_$ConnectionModelConnected>
+      get copyWith =>
+          __$$ConnectionModelConnectedCopyWithImpl<_$ConnectionModelConnected>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() disconnected,
+    required TResult Function(String host) connected,
+  }) {
+    return connected(host);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? disconnected,
+    TResult? Function(String host)? connected,
+  }) {
+    return connected?.call(host);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? disconnected,
+    TResult Function(String host)? connected,
+    required TResult orElse(),
+  }) {
+    if (connected != null) {
+      return connected(host);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ConnectionModelDisconnected value) disconnected,
+    required TResult Function(ConnectionModelConnected value) connected,
+  }) {
+    return connected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ConnectionModelDisconnected value)? disconnected,
+    TResult? Function(ConnectionModelConnected value)? connected,
+  }) {
+    return connected?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ConnectionModelDisconnected value)? disconnected,
+    TResult Function(ConnectionModelConnected value)? connected,
+    required TResult orElse(),
+  }) {
+    if (connected != null) {
+      return connected(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _ConnectionModel implements ConnectionModel {
-  const factory _ConnectionModel(
-      {required final String? host,
-      required final bool connected}) = _$_ConnectionModel;
+abstract class ConnectionModelConnected implements ConnectionModel {
+  const factory ConnectionModelConnected(final String host) =
+      _$ConnectionModelConnected;
 
-  @override
-  String? get host;
-  @override
-  bool get connected;
-  @override
+  String get host;
   @JsonKey(ignore: true)
-  _$$_ConnectionModelCopyWith<_$_ConnectionModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ConnectionModelConnectedCopyWith<_$ConnectionModelConnected>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -15,10 +15,12 @@ void networkScoreSync(NetworkScoreSyncRef ref) {
 
   void sendScore(ScoreModel score) {
     logger.t('send score to network');
-    final serverConnected = ref.read(serverProvider).connected;
+    final serverConnected =
+        ref.read(serverProvider) is ConnectionModelConnected;
     if (serverConnected) serverNotifier.send(score.toValue());
 
-    final clientConnected = ref.read(clientProvider).connected;
+    final clientConnected =
+        ref.read(clientProvider) is ConnectionModelConnected;
     if (clientConnected) clientNotifier.send(score.toValue());
   }
 

@@ -13,39 +13,80 @@ class ClientSettings extends ConsumerWidget {
 
     final client = ref.watch(clientProvider);
     final clientNotifier = ref.watch(clientProvider.notifier);
-    return Center(
-      child: ElevatedButton(
-        onPressed: () async {
-          if (client.connected) {
-            clientNotifier.disconnect();
-            return;
-          }
-          final hostAddress = await _dialogBuilder(context);
-          logger.t('scanned hostAddress: $hostAddress');
-          if (hostAddress == null) {
-            return;
-          }
-          await clientNotifier.connect(hostAddress);
-        },
-        child: Text(client.connected ? 'DISCONNECT' : 'CONNECT'),
-      ),
-    );
-  }
-}
 
-Future<String?> _dialogBuilder(BuildContext context) {
-  return showDialog<String?>(
-    context: context,
-    builder: (BuildContext context) {
-      return MobileScanner(
-        onDetect: (capture) {
-          final List<Barcode> barcodes = capture.barcodes;
-          for (final barcode in barcodes) {
-            debugPrint('Barcode found! ${barcode.rawValue}');
-            Navigator.of(context).pop(barcode.rawValue);
-          }
+    Future<String?> qrScannerDialog(BuildContext context) {
+      return showDialog<String?>(
+        context: context,
+        builder: (BuildContext context) {
+          return Scaffold(
+            body: Column(
+              children: [
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Scan QR code'),
+                    CloseButton(),
+                  ],
+                ),
+                Expanded(
+                  child: MobileScanner(
+                    onDetect: (capture) {
+                      final List<Barcode> barcodes = capture.barcodes;
+                      final barcode = barcodes.firstOrNull?.rawValue;
+                      logger.t('Barcode scanned: $barcode');
+                      Navigator.of(context).pop(barcode);
+                    },
+                  ),
+                ),
+              ],
+            ),
+          );
         },
       );
-    },
-  );
+    }
+
+    return Column(
+      children: switch (client) {
+        AsyncData(:final value) => switch (value) {
+            ConnectionModelDisconnected() => [
+                ElevatedButton(
+                  onPressed: () async {
+                    final hostAddress = await qrScannerDialog(context);
+                    logger.t('scanned hostAddress: $hostAddress');
+                    if (hostAddress == null) {
+                      return;
+                    }
+                    await clientNotifier.connect(hostAddress);
+                  },
+                  child: const Text('CONNECT'),
+                ),
+              ],
+            ConnectionModelConnected(:final host) => [
+                ElevatedButton(
+                  onPressed: () {
+                    clientNotifier.disconnect();
+                  },
+                  child: const Text('DISCONNECT'),
+                ),
+                Text('Connected to $host'),
+              ]
+          },
+        AsyncError(:final error) => [
+            ElevatedButton(
+              onPressed: () async {
+                final hostAddress = await qrScannerDialog(context);
+                logger.t('scanned hostAddress: $hostAddress');
+                if (hostAddress == null) {
+                  return;
+                }
+                await clientNotifier.connect(hostAddress);
+              },
+              child: const Text('CONNECT'),
+            ),
+            Text('Error: $error'),
+          ],
+        _ => const [CircularProgressIndicator()],
+      },
+    );
+  }
 }
