@@ -10,20 +10,21 @@ class TeamScoreHostApiImplementation : TeamScoreHostApi {
     init(session: WCSession?) {
         self.session = session;
     }
+
     func sendScore(message: MessageData, completion: @escaping (Result<Void, Error>) -> Void) {
-        print("[ios] send to watch", message);
+        print("[iOS] send to watch", message);
         if session == nil {
-            print("No session…");
+            print("[iOS] No session…");
             completion(.failure(FlutterError()));
             return;
         }
         if(!session!.isPaired || !session!.isReachable){
-            print("Watch not reachable…");
+            print("[iOS] Watch not reachable…");
             completion(.failure(FlutterError()));
             return;
         }
         DispatchQueue.main.async { // Send the message asynchronously
-            print("Sending counter…");
+            print("[iOS] Sending counter…");
             self.session!.sendMessage(["team1Score": message.team1Score, "team2Score": message.team2Score], replyHandler: nil);
             completion(.success(Void()));
         }
@@ -51,25 +52,7 @@ class TeamScoreHostApiImplementation : TeamScoreHostApi {
                                        completion:  {})
         }
     }
-    
-    //    func sendString(text: String) -> Bool {
-    //        print("ios send", text)
-    //        if session == nil {
-    //            print("No session…")
-    //            return false;
-    //        }
-    //        if(!session!.isPaired || !session!.isReachable){
-    //            print("Watch not reachable…")
-    //            return false;
-    //        }
-    //        DispatchQueue.main.async { // Send the message asynchronously
-    //            print("Sending counter…")
-    //            self.session!.sendMessage(["counter": text], replyHandler: nil)
-    //        }
-    //
-    //        return true;
-    //    }
-    
+
     override func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?

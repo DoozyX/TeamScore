@@ -41,6 +41,7 @@ class MessageData {
 
 class _TeamScoreHostApiCodec extends StandardMessageCodec {
   const _TeamScoreHostApiCodec();
+
   @override
   void writeValue(WriteBuffer buffer, Object? value) {
     if (value is MessageData) {
@@ -97,6 +98,7 @@ class TeamScoreHostApi {
 
 class _TeamScoreFlutterApiCodec extends StandardMessageCodec {
   const _TeamScoreFlutterApiCodec();
+
   @override
   void writeValue(WriteBuffer buffer, Object? value) {
     if (value is MessageData) {

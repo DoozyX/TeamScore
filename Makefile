@@ -1,3 +1,4 @@
+.PHONY: icons build_runner build_runner_watch pigeons format analyze test
 icons:
 	fvm flutter pub run flutter_launcher_icons
 build_runner:

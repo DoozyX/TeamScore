@@ -33,20 +33,24 @@ void watchSync(WatchSyncRef ref) {
 
   final hostApi = TeamScoreHostApi();
 
-  ref.listen(scoreProvider, (previous, next) {
+  ref.listen(scoreProvider, (previous, next) async {
     logger.t('score changed ${next.team1Score} - ${next.team2Score}');
     if (lastSynced == next) {
       logger.t('already synced');
       return;
     }
     logger.t('send score to watch');
-    hostApi.sendScore(
-      MessageData(
-        team1Score: next.team1Score,
-        team2Score: next.team2Score,
-      ),
-    );
-    lastSynced = next;
+    try {
+      await hostApi.sendScore(
+        MessageData(
+          team1Score: next.team1Score,
+          team2Score: next.team2Score,
+        ),
+      );
+      lastSynced = next;
+    } catch (e) {
+      logger.e('error sending score to watch: $e');
+    }
   });
 
   final scoreNotifier = ref.watch(scoreProvider.notifier);
