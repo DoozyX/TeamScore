@@ -343,10 +343,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_tts
-      sha256: b5e3e12c91cff97f912111937f190006f70c685e9fac78a4ff5c2220b860a6a9
+      sha256: "00a7af85ba2b53847028efc175029764240ab980b984eb0eae8386e2c3f7c460"
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.8.1"
+    version: "3.8.2"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
