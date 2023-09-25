@@ -15,7 +15,7 @@ dependencies:
   flutter_riverpod: ^2.4.0
   riverpod_annotation: ^2.1.5
   freezed_annotation: ^2.4.1
-  firebase_core: ^2.15.1
+  firebase_core: ^2.16.0
   logger: ^2.0.2
   intl: ^0.18.1
   network_info_plus: ^4.0.2
