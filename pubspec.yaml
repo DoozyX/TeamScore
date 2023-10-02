@@ -11,9 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
-  flutter_hooks: ^0.20.1
-  flutter_riverpod: ^2.4.0
-  riverpod_annotation: ^2.1.5
+  flutter_hooks: ^0.20.2
+  flutter_riverpod: ^2.4.1
+  riverpod_annotation: ^2.1.6
   freezed_annotation: ^2.4.1
   firebase_core: ^2.16.0
   logger: ^2.0.2
@@ -31,8 +31,8 @@ dev_dependencies:
   flutter_lints: ^2.0.3
   build_runner: ^2.4.6
   custom_lint: ^0.5.3
-  riverpod_generator: ^2.3.2
-  riverpod_lint: ^2.1.0
+  riverpod_generator: ^2.3.3
+  riverpod_lint: ^2.1.1
   pigeon: ^11.0.1
   freezed: ^2.4.1
   flutter_launcher_icons: ^0.13.1
