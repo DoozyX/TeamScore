@@ -18,7 +18,7 @@ dependencies:
   firebase_core: ^2.16.0
   logger: ^2.0.2
   intl: ^0.18.1
-  network_info_plus: ^4.0.2
+  network_info_plus: ^5.0.0
   qr_flutter: ^4.1.0
   mobile_scanner: ^3.4.1
   flutter_tts: ^3.8.3
