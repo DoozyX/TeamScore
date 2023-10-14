@@ -33,7 +33,7 @@ dev_dependencies:
   custom_lint: ^0.5.3
   riverpod_generator: ^2.3.3
   riverpod_lint: ^2.1.1
-  pigeon: ^11.0.1
+  pigeon: ^12.0.0
   freezed: ^2.4.1
   flutter_launcher_icons: ^0.13.1
 
