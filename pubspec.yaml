@@ -15,7 +15,7 @@ dependencies:
   flutter_riverpod: ^2.5.1
   riverpod_annotation: ^2.3.5
   freezed_annotation: ^2.4.1
-  firebase_core: ^2.27.2
+  firebase_core: ^2.28.0
   logger: ^2.2.0
   intl: ^0.19.0
   network_info_plus: ^5.0.2
@@ -23,7 +23,7 @@ dependencies:
   mobile_scanner: ^4.0.1
   flutter_tts: ^4.0.2
   hooks_riverpod: ^2.4.3
-  wakelock_plus: ^1.2.1
+  wakelock_plus: ^1.2.2
 
 dev_dependencies:
   flutter_test:
@@ -34,7 +34,7 @@ dev_dependencies:
   riverpod_generator: ^2.4.0
   riverpod_lint: ^2.3.10
   pigeon: ^17.3.0
-  freezed: ^2.4.7
+  freezed: ^2.5.1
   flutter_launcher_icons: ^0.13.1
 
 flutter:
