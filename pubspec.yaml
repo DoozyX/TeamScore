@@ -20,7 +20,7 @@ dependencies:
   intl: ^0.19.0
   network_info_plus: ^5.0.3
   qr_flutter: ^4.1.0
-  mobile_scanner: ^4.0.1
+  mobile_scanner: ^5.1.0
   flutter_tts: ^4.0.2
   hooks_riverpod: ^2.4.3
   wakelock_plus: ^1.2.4
