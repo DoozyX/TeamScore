@@ -556,10 +556,10 @@ packages:
     dependency: "direct main"
     description:
       name: mobile_scanner
-      sha256: "827765afbd4792ff3fd105ad593821ac0f6d8a7d352689013b07ee85be336312"
+      sha256: "4e30d37fac883fd7c1649ccca76f7e0993aaf2d10dfb681524c4e3451b8e3835"
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.1"
+    version: "5.1.0"
   network_info_plus:
     dependency: "direct main"
     description:
