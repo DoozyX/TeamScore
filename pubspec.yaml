@@ -15,8 +15,8 @@ dependencies:
   flutter_riverpod: ^2.5.1
   riverpod_annotation: ^2.3.5
   freezed_annotation: ^2.4.1
-  firebase_core: ^2.30.1
-  logger: ^2.2.0
+  firebase_core: ^2.31.0
+  logger: ^2.3.0
   intl: ^0.19.0
   network_info_plus: ^5.0.3
   qr_flutter: ^4.1.0
@@ -33,7 +33,7 @@ dev_dependencies:
   custom_lint: ^0.6.4
   riverpod_generator: ^2.4.0
   riverpod_lint: ^2.3.10
-  pigeon: ^18.0.0
+  pigeon: ^18.0.1
   freezed: ^2.5.2
   flutter_launcher_icons: ^0.13.1
 
