@@ -628,10 +628,10 @@ packages:
     dependency: "direct dev"
     description:
       name: pigeon
-      sha256: "012cdc56c09fc901fd44e44cd4ada9a859a839f55e0b0365f1ed683fe0072404"
+      sha256: "73f69e00ce3f13409ac20637cc49bfdcbb84ad8a0f03a963229784e27c118959"
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "20.0.1"
+    version: "21.0.0"
   plugin_platform_interface:
     dependency: transitive
     description:
