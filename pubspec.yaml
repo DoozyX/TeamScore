@@ -23,7 +23,7 @@ dependencies:
   mobile_scanner: ^5.1.1
   flutter_tts: ^4.0.2
   hooks_riverpod: ^2.4.3
-  wakelock_plus: ^1.2.5
+  wakelock_plus: ^1.2.7
 
 dev_dependencies:
   flutter_test:
@@ -33,7 +33,7 @@ dev_dependencies:
   custom_lint: ^0.6.4
   riverpod_generator: ^2.4.0
   riverpod_lint: ^2.3.10
-  pigeon: ^21.0.0
+  pigeon: ^21.1.0
   freezed: ^2.5.2
   flutter_launcher_icons: ^0.13.1
 
